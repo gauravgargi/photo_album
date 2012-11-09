@@ -1,0 +1,9 @@
+
+<%= simple_form_for @album, :html => { :multipart => true } do |f| %>
+	<%= f.input :name %>
+	<% photo = @album.photos.build %>
+	<%= f.simple_fields_for :photos, photo do |p| %>
+		<%= p.file_field :image %>
+	<% end %>
+	<%= f.button :submit %>
+<% end %>

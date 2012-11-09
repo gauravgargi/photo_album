@@ -16,3 +16,4 @@
 *.DS_Store
 .rvmrc
 TODO
+/public/uploads

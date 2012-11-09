@@ -12,6 +12,8 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'simple_form'
+
 gem 'json'
 
 # Gems used only for assets and not required
