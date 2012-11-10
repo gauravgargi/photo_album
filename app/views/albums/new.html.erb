@@ -1,9 +1,21 @@
 
 <%= simple_form_for @album, :html => { :multipart => true } do |f| %>
-	<%= f.input :name %>
+	<div><%= f.input :name %></div>
 	<% photo = @album.photos.build %>
-	<%= f.simple_fields_for :photos, photo do |p| %>
-		<%= p.file_field :image %>
-	<% end %>
-	<%= f.button :submit %>
+	
+	<div><%= add_new_photo_fields( f, photo ) %> </div>
+	<!-- TODO - Create a custom Add new Photo method -->
+
+	<div><%= link_to_add_fields "Add new photo", f, :photos %></div>
+
+	<div><%= f.button :submit %></div>
 <% end %>
+
+
+<script>
+	function add_fields(link, association, content) {
+	  var new_id = new Date().getTime();
+	  var regexp = new RegExp("new_" + association, "g")
+	  $(link).parent().before(content.replace(regexp, new_id));
+	}
+</script>
