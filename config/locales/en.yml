@@ -2,9 +2,14 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  home: "Home"
-  login: "Login"
-  my_albums: "My Albums"
-  settings: "Settings"
-  signout: "Signout"
+  form_label:
+    delete_photo: "Click on the check box to delete a photo"
+  navigation:
+    create_new_album: "Create New album"
+    home: "Home"
+    login: "Login"
+    my_albums: "My Albums"
+    settings: "Settings"
+    signout: "Signout"
+    signup: "Signup"
 

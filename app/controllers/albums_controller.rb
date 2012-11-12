@@ -35,5 +35,19 @@ class AlbumsController < ApplicationController
 		render 'shared/not_authorised' unless @album.viewable_by?(current_user)
 	end
 
+	def edit
+		@album = Album.find( params[:id] )
+		render 'shared/not_authorised' unless @album.viewable_by?(current_user)
+	end
+
+	def update
+		@album = Album.find( params[:id] )
+		if @album.update_attributes( params[:album] )
+			redirect_to :action => 'show'
+		else
+			redirect_to :action => 'edit'
+		end
+	end
+
 
 end

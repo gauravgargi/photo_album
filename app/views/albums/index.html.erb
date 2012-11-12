@@ -1,6 +1,6 @@
 <h1>Albums Index Page</h1>
 
 <% @albums.each do |album| %>
-	<div><%= link_to album.name, album_photos_path( album ) %> </div>
+	<!-- <div><%= link_to album.name, album_photos_path( album ) %> </div> -->
+	<div><%= link_to album.name, edit_album_path( album ) %> </div>
 <% end %>
-
