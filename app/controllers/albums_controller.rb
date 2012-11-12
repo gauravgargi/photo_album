@@ -32,7 +32,7 @@ class AlbumsController < ApplicationController
 
 	def show
 		@album = Album.find( params[:id] )
-		redirect_to root_path unless @album.viewable_by?(current_user)
+		render 'shared/not_authorised' unless @album.viewable_by?(current_user)
 	end
 
 
