@@ -15,4 +15,5 @@ en:
     settings: "Settings"
     signout: "Signout"
     signup: "Signup"
+    username: "Welcome, %{name}"
 

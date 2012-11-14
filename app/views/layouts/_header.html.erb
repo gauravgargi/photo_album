@@ -1,5 +1,9 @@
 <div class='header_nav margin_top_5 margin_bottom margin_right_20 padding_right_20 clearfix'>
   <ul>
+    <% if user_signed_in? %>
+      <% name = current_user.name || "User" %>
+      <li><%= t('navigation.username', :name => name ) %></li>
+    <% end %>
     <li><%= link_to t('home'), root_path %></li>
     <% if user_signed_in? %>
       <li><%= link_to t('navigation.create_new_album'), new_album_path %></li>
