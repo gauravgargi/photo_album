@@ -1,6 +1,18 @@
-<h1>Albums Index Page</h1>
+<h1>My Albums</h1>
+<h6 class='margin_bottom_20'>Click on the album to view the album pictures.</h6>
 
 <% @albums.each do |album| %>
+	<% next if album.photos.empty? %>
 	<!-- <div><%= link_to album.name, album_photos_path( album ) %> </div> -->
-	<div><%= link_to album.name, edit_album_path( album ) %> </div>
+	<div class='album_wrapper float_left'>
+		<div class='album_image'>
+			<%= link_to image_tag(album.photos.first.image_url(:thumb)), album_photos_path( album ) %>
+		</div>
+		<div class='album_name'>
+			<%= link_to ( album.name + "(" + album.photos.count.to_s + ")" ), edit_album_path( album ) %>
+		</div>
+		<div class='padding_left'>
+			<%= link_to t('delete_album'), album, :method => :delete, :confirm => 'Are you sure you want to delete the album ?', :class => 'red' %>
+		</div>
+	</div>
 <% end %>

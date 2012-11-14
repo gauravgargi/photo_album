@@ -1,15 +1,21 @@
-
-<%= simple_form_for @album, :html => { :multipart => true } do |f| %>
-	<%= f.input :name %>
-	<div><%= t('form_label.delete_photo') %></div>
-	<% @album.photos.each do |photo| %>
-		<div class='photo'>
-			<%= image_tag photo.image_url(:thumb) %>
-			<%= f.simple_fields_for :photos, photo do |p| %>
-				<%= p.check_box :_destroy %>
-		  <% end %>
+<h2 class='margin_bottom'> Edit Album <%= @album.name.titleize %></h2>
+<div class='margin_bottom_20'>
+	<%= simple_form_for @album, :html => { :multipart => true } do |f| %>
+		<%= f.input :name %>
+		<div class='margin_bottom'><%= t('form_label.delete_photo') %></div>
+		<div class='album_images_wrapper clearfix'>
+			<% @album.photos.each do |photo| %>
+				<div class='album_image'>
+					<div>
+						<%= link_to image_tag(photo.image_url(:thumb)), photo.image_url, :target=>'_blank' %>
+					</div>
+					<%= f.simple_fields_for :photos, photo do |p| %>
+						<%= p.check_box :_destroy %> Delete?
+				  <% end %>
+				</div>
+			<% end %>
 		</div>
+		<div><%= link_to_add_fields "Add new photo ?", f, :photos %></div>
+		<%= f.button :submit %>
 	<% end %>
-	<div><%= link_to_add_fields "Add new photo", f, :photos %></div>
-	<%= f.button :submit %>
-<% end %>
+</div>

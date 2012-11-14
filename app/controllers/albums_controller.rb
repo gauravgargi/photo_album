@@ -15,7 +15,10 @@ class AlbumsController < ApplicationController
 	def create
 		@album = Album.new( params[:album] )
 		@album.user_id = current_user.id
-		if @album.save
+		if params[:album][:photos_attributes].nil?
+			flash.now[:error] = I18n.t('flash.select_photo')
+			render new_album_path
+		elsif @album.save
 			flash[:notice] = I18n.t('flash.album_created')
 			redirect_to albums_path
 		else
@@ -45,11 +48,19 @@ class AlbumsController < ApplicationController
 	def update
 		@album = Album.find( params[:id] )
 		if @album.update_attributes( params[:album] )
-			redirect_to :action => 'show'
+			flash[:notice] = I18n.t('flash.album_updated_successfully')
+			redirect_to albums_path
 		else
-			render edit_album_path
+			flash.now[:error] = I18n.t('flash.error_while_updating_album')
+			render :action => 'edit'
 		end
 	end
 
+  def destroy
+    @album = Album.find(params[:id])
+    @album.destroy
+    flash[:notice] = "Album Deleted Successfully"
+    redirect_to albums_path
+  end
 
 end
