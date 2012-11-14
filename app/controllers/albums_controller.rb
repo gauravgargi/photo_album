@@ -16,9 +16,11 @@ class AlbumsController < ApplicationController
 		@album = Album.new( params[:album] )
 		@album.user_id = current_user.id
 		if @album.save
+			flash[:notice] = I18n.t('flash.album_created')
 			redirect_to albums_path
 		else
-			redirect_to new_album_path
+			flash.now[:error] = I18n.t('flash.error_while_creating_album')
+			render new_album_path
 		end
 	end
 
@@ -45,7 +47,7 @@ class AlbumsController < ApplicationController
 		if @album.update_attributes( params[:album] )
 			redirect_to :action => 'show'
 		else
-			redirect_to :action => 'edit'
+			render edit_album_path
 		end
 	end
 

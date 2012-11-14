@@ -6,14 +6,21 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<header>
-		<%= render :partial => 'layouts/header' %>
-</header>
-<body>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-
-<%= yield %>
-
+<body class='bg_wrapper'>
+	<div class='header_wrapper'>
+		<header class='container_12'>
+				<%= render :partial => 'layouts/header' %>
+		</header>
+	</div>
+	<div class='main_content container_12 dark_blue margin_top_20'>
+	  <div class='flash'>
+			<% flash.each do |key, value| %>
+			  <% next if value.blank? %>
+			  <% klass = ( [ 'notice', 'success' ].include?( key.to_s ) ? 'highlight' : 'error' ) %>
+			  <%= content_tag(:div, value, :class => "#{klass}") %>
+			<% end %>
+		</div>
+		<%= yield %>
+	</div>
 </body>
 </html>

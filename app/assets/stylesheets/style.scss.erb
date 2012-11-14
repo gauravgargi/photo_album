@@ -1,0 +1,123 @@
+
+$blue_tinge_color: #E5ECF0;
+$dark_blue_color:  #142433;
+$red_color: #AB3636;
+$white: white;
+$green_color: #DEEBD6;
+
+$border : 1px solid #888;
+$border_error: 1px solid $red_color;
+
+$form_label_width: 100px;
+$input_field_width: 250px;
+
+.bg_wrapper{
+	background-color: $blue_tinge_color;
+}
+.header_wrapper{
+	background: url(<%= asset_path( 'topnav_bg.png' ) %>) repeat-x;
+	a, a:visited{
+		color: $blue_tinge_color;
+	}
+	a:hover{
+		color: $white;
+	}
+	.header_nav ul{
+		list-style: none;
+		float: right;
+		li{
+			float: left;
+		}
+	}
+}
+.light_blue{
+	color: $blue_tinge_color;
+}
+.dark_blue{
+	color: $dark_blue_color;
+}
+.red{
+	color: $red_color;
+}
+.white{
+	color: $white;
+}
+a, a:visited{
+	color: $dark_blue_color;
+}
+a:hover{
+	color: $red_color;
+}
+#error_explanation{
+	color: $red_color;
+}
+
+
+.flash{
+  margin: 20px 35px 20px 0;
+  text-align: center;
+  div {
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 15px;
+  }
+  div.highlight, div.error{
+    line-height: 15px;
+    padding: 10px;
+  }
+  div.highlight{
+    color: #6d7f4c;
+    background: $green_color;
+    border: 1px solid #6d7f4c;
+  }
+  div.error{
+  	background: $red_color;
+    border: 1px solid #ab3636;
+    color: $white;
+  }
+}
+
+.field_with_errors{
+	input[type='text'], input[type='email'], input[type='password']{
+		border: $border_error;
+	}
+	span.error{
+		display: block;
+		color: $red_color;
+		margin-bottom: 10px;
+		margin-top: -5px;
+		margin-left: $form_label_width;
+		width: $input_field_width;
+		text-align: center;
+	}
+}
+
+////////////////////////////////// FORM FIELDS STYLING STARTS ////////////////////////////////////////
+
+div.input{
+	label{
+		width: $form_label_width;
+		float: left;
+		display: block;
+	}
+}
+
+input[type='email'], input[type='password'], input[type='text']{
+	width: $input_field_width;
+  height: 20px;
+  font-size: 14px;
+  border: $border;
+  margin-bottom: 10px;
+}
+
+input[type='submit']{
+	padding: 5px;
+	width: 150px;
+	border: 1px solid white;
+	color: $white;
+	background-color: $dark_blue_color;
+	border-radius: 3px;
+	font-size: 15px;
+}
+
+////////////////////////////////// FORM FIELDS STYLING ENDS ////////////////////////////////////////

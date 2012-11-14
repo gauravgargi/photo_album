@@ -2,6 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  flash:
+    album_created: "Album Created Successfully"
+    error_while_creating_album: "Error while creating album"
   form_label:
     delete_photo: "Click on the check box to delete a photo"
   navigation:
