@@ -12,6 +12,15 @@
 			<%= link_to image_tag(photo.image_url(:thumb)), photo.image_url, :target=>'_blank' %>
 		</div>
 		<div>
+			Tags: 
+			<% if photo.tags %>
+				<% tags = photo.tags.split(',') %>
+				<% tags.each do |tag| %>
+					<%= tag.strip.titleize  %>, 
+				<% end %>
+			<% end %>
+		</div>
+		<div>
 			<div><%= link_to "View Full sized photo", photo.image_url, :target=>'_blank' %></div>
 		</div>
 	</div>

@@ -11,6 +11,7 @@
 					</div>
 					<%= f.simple_fields_for :photos, photo do |p| %>
 						<%= p.check_box :_destroy %> Delete?
+						<%= p.input :tags, :input_html => { :class => 'small_width' } %>
 				  <% end %>
 				</div>
 			<% end %>
